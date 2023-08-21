@@ -1,0 +1,39 @@
+﻿@model TurismoMexicoMVC.Models.ViewModels.NuevoLugar
+@{
+    ViewBag.Title = "Nuevo lugar";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("Nuevo_Lugar", "Lugar", FormMethod.Post))
+{
+    <div class="row">
+        <div class="col-md-12">
+            <div>
+                @Html.LabelFor(d => d.nombre, new { @class = "fw-bolder" })
+                @Html.TextBoxFor(d => d.nombre, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(d => d.nombre, null, new { @class = "red" })
+            </div>
+            <hr />
+            <div>
+                @Html.LabelFor(d => d.descripcion, new { @class = "fw-bolder" })
+                @Html.TextBoxFor(d => d.descripcion, "", new { @class = "form-control" })
+            </div>
+            <hr />
+            <div>
+                @Html.LabelFor(d => d.ubicacion, new { @class = "fw-bolder" })
+                @Html.TextBoxFor(d => d.ubicacion, "", new { @class = "form-control" })
+            </div>
+            <hr />
+            <div>
+                @Html.Label("Lugar", new { @class = "fw-bolder" })
+                @Html.DropDownListFor(d => d.categoria_id, new SelectList(ViewBag.ListaCategoria, "id_categoria", "nombrecategoria"), new { @class = "form-control" })
+            </div>
+            <hr />
+            <div style="text-align:right;">
+                <input value="Guardar" class="btn btn-primary" type="submit" />
+            </div>
+        </div>
+    </div>
+}
+

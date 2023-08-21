@@ -22,9 +22,9 @@ namespace TurismoMexicoMVC.Controllers
                 List = (from c in db.categorias
                         select new CategoriasLista
                         {
-                            id_categoria = c.id_categoria,
-                            nombre = c.nombre,
-                            descripcion = c.descripcion,
+                            id_categoria=c.id_categoria,
+                            nombre=c.nombre,
+                            descripcion=c.descripcion
                         }
                       ).ToList();
             }

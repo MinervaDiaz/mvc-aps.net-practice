@@ -30,5 +30,6 @@ namespace TurismoMexicoMVC.Models
         public virtual DbSet<fotos> fotos { get; set; }
         public virtual DbSet<lugares> lugares { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<View_Lugares> View_Lugares { get; set; }
     }
 }

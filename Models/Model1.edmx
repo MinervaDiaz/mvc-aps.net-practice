@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="TurismoMexicoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="TurismoMexicoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="categorias">
           <Key>
             <PropertyRef Name="id_categoria" />
@@ -52,6 +52,22 @@
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'TurismoMexico.dbo.View_Lugares' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="View_Lugares">
+          <Key>
+            <PropertyRef Name="id_lugar" />
+            <PropertyRef Name="categoria_id" />
+            <PropertyRef Name="nombre_categoria" />
+            <PropertyRef Name="nombre_lugar" />
+          </Key>
+          <Property Name="id_lugar" Type="int" Nullable="false" />
+          <Property Name="categoria_id" Type="int" Nullable="false" />
+          <Property Name="nombre_categoria" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="nombre_lugar" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="255" />
+          <Property Name="ubicacion" Type="varchar" MaxLength="100" />
+        </EntityType>
         <Association Name="FK__comentari__lugar__619B8048">
           <End Role="lugares" Type="Self.lugares" Multiplicity="1" />
           <End Role="comentarios" Type="Self.comentarios" Multiplicity="*" />
@@ -94,6 +110,16 @@
           <EntitySet Name="fotos" EntityType="Self.fotos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="lugares" EntityType="Self.lugares" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="View_Lugares" EntityType="Self.View_Lugares" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_Lugares].[id_lugar] AS [id_lugar], 
+    [View_Lugares].[categoria_id] AS [categoria_id], 
+    [View_Lugares].[nombre_categoria] AS [nombre_categoria], 
+    [View_Lugares].[nombre_lugar] AS [nombre_lugar], 
+    [View_Lugares].[descripcion] AS [descripcion], 
+    [View_Lugares].[ubicacion] AS [ubicacion]
+    FROM [dbo].[View_Lugares] AS [View_Lugares]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK__comentari__lugar__619B8048" Association="Self.FK__comentari__lugar__619B8048">
             <End Role="lugares" EntitySet="lugares" />
             <End Role="comentarios" EntitySet="comentarios" />
@@ -107,8 +133,7 @@
             <End Role="lugares" EntitySet="lugares" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="TurismoMexicoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -219,7 +244,22 @@
             <End Role="lugares" EntitySet="lugares" />
             <End Role="fotos" EntitySet="fotos" />
           </AssociationSet>
+          <EntitySet Name="View_Lugares" EntityType="TurismoMexicoModel.View_Lugares" />
         </EntityContainer>
+        <EntityType Name="View_Lugares">
+          <Key>
+            <PropertyRef Name="id_lugar" />
+            <PropertyRef Name="categoria_id" />
+            <PropertyRef Name="nombre_categoria" />
+            <PropertyRef Name="nombre_lugar" />
+          </Key>
+          <Property Name="id_lugar" Type="Int32" Nullable="false" />
+          <Property Name="categoria_id" Type="Int32" Nullable="false" />
+          <Property Name="nombre_categoria" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="nombre_lugar" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ubicacion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -275,6 +315,18 @@
                 <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
                 <ScalarProperty Name="version" ColumnName="version" />
                 <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_Lugares">
+            <EntityTypeMapping TypeName="TurismoMexicoModel.View_Lugares">
+              <MappingFragment StoreEntitySet="View_Lugares">
+                <ScalarProperty Name="ubicacion" ColumnName="ubicacion" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="nombre_lugar" ColumnName="nombre_lugar" />
+                <ScalarProperty Name="nombre_categoria" ColumnName="nombre_categoria" />
+                <ScalarProperty Name="categoria_id" ColumnName="categoria_id" />
+                <ScalarProperty Name="id_lugar" ColumnName="id_lugar" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

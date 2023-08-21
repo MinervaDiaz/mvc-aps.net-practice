@@ -107,5 +107,20 @@
       <End Role="lugares" EntitySet="lugares" />
       <End Role="fotos" EntitySet="fotos" />
     </AssociationSet>
+    <EntitySet Name="View_Lugares" EntityType="TurismoMexicoModel.View_Lugares" />
   </EntityContainer>
+  <EntityType Name="View_Lugares">
+    <Key>
+      <PropertyRef Name="id_lugar" />
+      <PropertyRef Name="categoria_id" />
+      <PropertyRef Name="nombre_categoria" />
+      <PropertyRef Name="nombre_lugar" />
+    </Key>
+    <Property Name="id_lugar" Type="Int32" Nullable="false" />
+    <Property Name="categoria_id" Type="Int32" Nullable="false" />
+    <Property Name="nombre_categoria" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="nombre_lugar" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ubicacion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
 </Schema>

@@ -1,0 +1,45 @@
+﻿@* ponemos model en minúscula porque es un helper *@
+@model List<TurismoMexicoMVC.Models.ViewModels.ListViewLugares>
+@{
+    ViewBag.Title = "Lista de lugares";
+}
+
+<h3 class="text-center mb-4">@ViewBag.Title</h3>
+
+<div class="row">
+    <div class="col-xs-2" style="text-align:right;">
+        <a href="~/Lugar/Nuevo_Lugar" class="btn btn-primary mb-3">Nuevo lugar</a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-striped table-bordered text-center">
+            <tr class="bg-warning">
+                <th>Código</th>
+                <th>Nombre</th>
+                <th>Descripcion</th>
+                <th>Ubicacion</th>
+                <th>Categoria</th>
+                @foreach (var Elemento in Model)
+                {
+                <tr>    
+                    <td>@Elemento.id_lugar</td>
+                    <td>@Elemento.nombre_lugar</td>
+                    <td>@Elemento.descripcion</td>
+                    <td>@Elemento.ubicacion</td>
+                    <td>@Elemento.nombre_categoria</td>
+                    <td>
+                        <a class="btn btn-warning" href="~/Lugar/Editar_Lugar/@Elemento.id_lugar"><i class="fa-solid fa-wand-magic-sparkles"></i></a>
+                        </td>
+                    <td>
+                        <a class="btn btn-warning" href="~/Lugar/Eliminar_Lugar/@Elemento.id_lugar"><i class="fa-regular fa-trash-can"></i></a>
+
+                    </td>
+                </tr>
+
+            }
+            </table>
+        </div>
+    </div>
+

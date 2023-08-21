@@ -13,6 +13,7 @@
         <AssociationConnector Association="TurismoMexicoModel.FK__lugares__categor__5EBF139D" ManuallyRouted="false" />
         <AssociationConnector Association="TurismoMexicoModel.FK__comentari__lugar__619B8048" ManuallyRouted="false" />
         <AssociationConnector Association="TurismoMexicoModel.FK__fotos__lugar_id__02FC7413" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="TurismoMexicoModel.View_Lugares" Width="1.5" PointX="3.375" PointY="6.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
