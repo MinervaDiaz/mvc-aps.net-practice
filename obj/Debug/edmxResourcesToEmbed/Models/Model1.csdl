@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TurismoMexicoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="categorias">
+    <Key>
+      <PropertyRef Name="id_categoria" />
+    </Key>
+    <Property Name="id_categoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="lugares" Relationship="Self.FK__lugares__categor__5EBF139D" FromRole="categorias" ToRole="lugares" />
+  </EntityType>
+  <EntityType Name="comentarios">
+    <Key>
+      <PropertyRef Name="id_comentario" />
+    </Key>
+    <Property Name="id_comentario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="lugar_id" Type="Int32" Nullable="false" />
+    <Property Name="nombre_usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="comentario" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="fecha" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="lugares" Relationship="Self.FK__comentari__lugar__619B8048" FromRole="comentarios" ToRole="lugares" />
+  </EntityType>
+  <EntityType Name="fotos">
+    <Key>
+      <PropertyRef Name="id_foto" />
+    </Key>
+    <Property Name="id_foto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="lugar_id" Type="Int32" Nullable="false" />
+    <Property Name="url_foto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="lugares" Relationship="Self.FK__fotos__lugar_id__02FC7413" FromRole="fotos" ToRole="lugares" />
+  </EntityType>
+  <EntityType Name="lugares">
+    <Key>
+      <PropertyRef Name="id_lugar" />
+    </Key>
+    <Property Name="id_lugar" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ubicacion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="categoria_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="categorias" Relationship="Self.FK__lugares__categor__5EBF139D" FromRole="lugares" ToRole="categorias" />
+    <NavigationProperty Name="comentarios" Relationship="Self.FK__comentari__lugar__619B8048" FromRole="lugares" ToRole="comentarios" />
+    <NavigationProperty Name="fotos" Relationship="Self.FK__fotos__lugar_id__02FC7413" FromRole="lugares" ToRole="fotos" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK__lugares__categor__5EBF139D">
+    <End Role="categorias" Type="Self.categorias" Multiplicity="1" />
+    <End Role="lugares" Type="Self.lugares" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="categorias">
+        <PropertyRef Name="id_categoria" />
+      </Principal>
+      <Dependent Role="lugares">
+        <PropertyRef Name="categoria_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__comentari__lugar__619B8048">
+    <End Role="lugares" Type="Self.lugares" Multiplicity="1" />
+    <End Role="comentarios" Type="Self.comentarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="lugares">
+        <PropertyRef Name="id_lugar" />
+      </Principal>
+      <Dependent Role="comentarios">
+        <PropertyRef Name="lugar_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__fotos__lugar_id__02FC7413">
+    <End Role="lugares" Type="Self.lugares" Multiplicity="1" />
+    <End Role="fotos" Type="Self.fotos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="lugares">
+        <PropertyRef Name="id_lugar" />
+      </Principal>
+      <Dependent Role="fotos">
+        <PropertyRef Name="lugar_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TurismoMexicoEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="categorias" EntityType="Self.categorias" />
+    <EntitySet Name="comentarios" EntityType="Self.comentarios" />
+    <EntitySet Name="fotos" EntityType="Self.fotos" />
+    <EntitySet Name="lugares" EntityType="Self.lugares" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <AssociationSet Name="FK__lugares__categor__5EBF139D" Association="Self.FK__lugares__categor__5EBF139D">
+      <End Role="categorias" EntitySet="categorias" />
+      <End Role="lugares" EntitySet="lugares" />
+    </AssociationSet>
+    <AssociationSet Name="FK__comentari__lugar__619B8048" Association="Self.FK__comentari__lugar__619B8048">
+      <End Role="lugares" EntitySet="lugares" />
+      <End Role="comentarios" EntitySet="comentarios" />
+    </AssociationSet>
+    <AssociationSet Name="FK__fotos__lugar_id__02FC7413" Association="Self.FK__fotos__lugar_id__02FC7413">
+      <End Role="lugares" EntitySet="lugares" />
+      <End Role="fotos" EntitySet="fotos" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

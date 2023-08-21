@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TurismoMexicoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="categorias">
+    <Key>
+      <PropertyRef Name="id_categoria" />
+    </Key>
+    <Property Name="id_categoria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="comentarios">
+    <Key>
+      <PropertyRef Name="id_comentario" />
+    </Key>
+    <Property Name="id_comentario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="lugar_id" Type="int" Nullable="false" />
+    <Property Name="nombre_usuario" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="comentario" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="fecha" Type="datetime" />
+  </EntityType>
+  <EntityType Name="fotos">
+    <Key>
+      <PropertyRef Name="id_foto" />
+    </Key>
+    <Property Name="id_foto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="lugar_id" Type="int" Nullable="false" />
+    <Property Name="url_foto" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="lugares">
+    <Key>
+      <PropertyRef Name="id_lugar" />
+    </Key>
+    <Property Name="id_lugar" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="255" />
+    <Property Name="ubicacion" Type="varchar" MaxLength="100" />
+    <Property Name="categoria_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK__comentari__lugar__619B8048">
+    <End Role="lugares" Type="Self.lugares" Multiplicity="1" />
+    <End Role="comentarios" Type="Self.comentarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="lugares">
+        <PropertyRef Name="id_lugar" />
+      </Principal>
+      <Dependent Role="comentarios">
+        <PropertyRef Name="lugar_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__fotos__lugar_id__02FC7413">
+    <End Role="lugares" Type="Self.lugares" Multiplicity="1" />
+    <End Role="fotos" Type="Self.fotos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="lugares">
+        <PropertyRef Name="id_lugar" />
+      </Principal>
+      <Dependent Role="fotos">
+        <PropertyRef Name="lugar_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__lugares__categor__5EBF139D">
+    <End Role="categorias" Type="Self.categorias" Multiplicity="1" />
+    <End Role="lugares" Type="Self.lugares" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="categorias">
+        <PropertyRef Name="id_categoria" />
+      </Principal>
+      <Dependent Role="lugares">
+        <PropertyRef Name="categoria_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TurismoMexicoModelStoreContainer">
+    <EntitySet Name="categorias" EntityType="Self.categorias" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="comentarios" EntityType="Self.comentarios" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="fotos" EntityType="Self.fotos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="lugares" EntityType="Self.lugares" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__comentari__lugar__619B8048" Association="Self.FK__comentari__lugar__619B8048">
+      <End Role="lugares" EntitySet="lugares" />
+      <End Role="comentarios" EntitySet="comentarios" />
+    </AssociationSet>
+    <AssociationSet Name="FK__fotos__lugar_id__02FC7413" Association="Self.FK__fotos__lugar_id__02FC7413">
+      <End Role="lugares" EntitySet="lugares" />
+      <End Role="fotos" EntitySet="fotos" />
+    </AssociationSet>
+    <AssociationSet Name="FK__lugares__categor__5EBF139D" Association="Self.FK__lugares__categor__5EBF139D">
+      <End Role="categorias" EntitySet="categorias" />
+      <End Role="lugares" EntitySet="lugares" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
