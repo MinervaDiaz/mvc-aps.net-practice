@@ -8,6 +8,6 @@ namespace TurismoMexicoMVC.Models.ViewModels
     public class CategoriaDDL
     {
         public int id_categoria { get; set; }
-        public string nombrecategoria { get; set; }
+        public string nombre_cat { get; set; }
     }
 }

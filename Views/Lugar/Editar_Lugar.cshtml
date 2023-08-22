@@ -1,7 +1,41 @@
-﻿
-@{
-    ViewBag.Title = "Editar_Lugar";
-}
+﻿@model TurismoMexicoMVC.Models.lugares
 
-<h2>Editar_Lugar</h2>
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("Editar lugar", "Lugares", FormMethod.Post))
+{
+    <div class="row">
+        <div class="col-md-12">
+            @* HIDDEN FOR ESTÁ OCULTO *@
+            @Html.HiddenFor(d => d.id_lugar)
+
+            <div>
+                @Html.LabelFor(d => d.nombre)
+                @Html.TextBoxFor(d => d.nombre, null, new { @class = "form-control" })
+                @Html.ValidationMessageFor(d => d.nombre, null, new { @class = "red" })
+            </div>
+            <div>
+                @Html.LabelFor(d => d.descripcion)
+                @Html.EditorFor(d => d.descripcion, "", new { @class = "date" })
+            </div>
+            <div>
+                @Html.LabelFor(d => d.ubicacion)
+                @Html.EditorFor(d => d.ubicacion, "", new { @class = "date" })
+            </div>
+
+            @* NO SE USA LABELFOR PORQUE NO ES UN ATRIBUTO COMO TAL *@
+            <div>
+                @Html.Label("Lugar")
+                @Html.DropDownListFor(d => d.categoria_id, new SelectList(ViewBag.ListaCategoria, "id_categoria", "nombre_cat"),new { @class = "form-control" })
+            </div>
+
+            <div style="text-align:right;">
+                <input value="Guardar" class="btn btn-primary" type="submit" />
+            </div>
+
+
+        </div>
+
+    </div>
+}
 

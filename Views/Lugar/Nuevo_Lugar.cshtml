@@ -27,7 +27,7 @@
             <hr />
             <div>
                 @Html.Label("Lugar", new { @class = "fw-bolder" })
-                @Html.DropDownListFor(d => d.categoria_id, new SelectList(ViewBag.ListaCategoria, "id_categoria", "nombrecategoria"), new { @class = "form-control" })
+                @Html.DropDownListFor(d => d.categoria_id, new SelectList(ViewBag.ListaCategoria, "id_categoria", "nombre_cat"), new { @class = "form-control" })
             </div>
             <hr />
             <div style="text-align:right;">

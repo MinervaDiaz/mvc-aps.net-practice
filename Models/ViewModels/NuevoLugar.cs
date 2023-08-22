@@ -13,12 +13,11 @@ namespace TurismoMexicoMVC.Models.ViewModels
         [Required]//datavalidator   EL VALOR DEBAJO DEL REQUIRED NO DEBE IR NULO
         [Display(Name = "nombre")]
         public string nombre { get; set; }
-        [Required]//datavalidator   EL VALOR DEBAJO DEL REQUIRED NO DEBE IR NULO
-        [Display(Name = "descripcion")]
+        
         public string descripcion { get; set; }
-        [Required]//datavalidator   EL VALOR DEBAJO DEL REQUIRED NO DEBE IR NULO
-        [Display(Name = "familia")]
         public string ubicacion { get; set; }
+        [Required]//datavalidator   EL VALOR DEBAJO DEL REQUIRED NO DEBE IR NULO
+        [Display(Name = "categoria_id")]
         public int categoria_id { get; set; }
 
     }

@@ -1,5 +1,5 @@
 ﻿@* ponemos model en minúscula porque es un helper *@
-@model List<TurismoMexicoMVC.Models.ViewModels.ListViewLugares>
+@model List<TurismoMexicoMVC.Models.ViewModels.LugaresLista>
 @{
     ViewBag.Title = "Lista de lugares";
 }
@@ -21,14 +21,17 @@
                 <th>Descripcion</th>
                 <th>Ubicacion</th>
                 <th>Categoria</th>
+                <th></th>
+                <th></th>
+
                 @foreach (var Elemento in Model)
                 {
-                <tr>    
+<tr>    
                     <td>@Elemento.id_lugar</td>
-                    <td>@Elemento.nombre_lugar</td>
+                    <td>@Elemento.nombre</td>
                     <td>@Elemento.descripcion</td>
                     <td>@Elemento.ubicacion</td>
-                    <td>@Elemento.nombre_categoria</td>
+                    <td>@Elemento.nombre_cat</td>
                     <td>
                         <a class="btn btn-warning" href="~/Lugar/Editar_Lugar/@Elemento.id_lugar"><i class="fa-solid fa-wand-magic-sparkles"></i></a>
                         </td>

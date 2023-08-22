@@ -14,17 +14,19 @@ namespace TurismoMexicoMVC.Controllers
         // GET: Lugar
         public ActionResult Index()
         {
-            List<ListViewLugares> lista = new List<ListViewLugares>();
+            List<LugaresLista> lista = new List<LugaresLista>();
             using (TurismoMexicoEntities1 context = new TurismoMexicoEntities1())
             {
-                lista = (from VR in context.View_Lugares
-                         select new ListViewLugares
+                lista = (from l in context.lugares
+                         join cat in context.categorias on l.categoria_id equals cat.id_categoria
+                         select new LugaresLista
                          {
-                             id_lugar = VR.id_lugar,
-                             nombre_lugar = VR.nombre_lugar,
-                             descripcion = VR.descripcion,
-                             ubicacion = VR.ubicacion,
-                             nombre_categoria = VR.nombre_categoria
+                             id_lugar = l.id_lugar,
+                             nombre=l.nombre,
+                             descripcion=l.descripcion,
+                             ubicacion=l.descripcion,
+                             categoria_id = cat.id_categoria,
+                             nombre_cat=cat.nombre,
                          }
                 ).ToList();
             }
@@ -33,29 +35,57 @@ namespace TurismoMexicoMVC.Controllers
 
         public ActionResult Editar_Lugar(int id)
         {
-            ////llamamos al contexto, voy a trabajar con el contexto
-            //lugares lugares = new lugares();
-            //using (TurismoMexicoEntities1 db = new TurismoMexicoEntities1())
-            //{
-            //    lugares = db.lugares.Where(x => x.id_lugar == id).FirstOrDefault();
-            //}
-            //ViewBag.Title = "Editar Lugar n° " + lugares.id_lugar;
-            //return View(lugares);
-            return View();
+            //llamamos al contexto, voy a trabajar con el contexto
+            lugares lugares = new lugares();
+            using (TurismoMexicoEntities1 db = new TurismoMexicoEntities1())
+            {
+                lugares = db.lugares.Where(x => x.id_lugar == id).FirstOrDefault();
+            }
+            ViewBag.Title = "Editar Lugar n° " + lugares.id_lugar;
+            CargarDDL();
+            return View(lugares);
         }
 
         //Polimorfismo de los métodos de arriba y abajo, enel método de abajo regresamos la peticion de POST, arriba solo es GET
         [HttpPost]
         public ActionResult Editar_Lugar(lugares model)
         {
-            CargarDDL();
-            return View();
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    using (TurismoMexicoEntities1 db = new TurismoMexicoEntities1())
+                    {
+                        var lugares = new lugares();
+                        lugares.id_lugar= model.id_lugar;
+                        lugares.nombre = model.nombre;
+                        lugares.descripcion = model.descripcion;
+                        lugares.ubicacion = model.ubicacion;
+                        lugares.categoria_id = model.categoria_id;
+                        db.Entry(lugares).State = System.Data.Entity.EntityState.Modified;
+                        db.SaveChanges();
+                        CargarDDL();
+                        Alert("Actualización exitosa", NotificationType.success);
+                    }
+                    return Redirect("~/Lugar");
+                }
+                Alert("Verificar la información", NotificationType.warning);
+                CargarDDL();
+                return View(model);
+            }
+            catch (Exception ex)
+            {
+                Alert("Ha ocurrido un error: " + ex.Message, NotificationType.error);
+                CargarDDL();
+                return View(model);
+            }
         }
 
 
 
         public ActionResult Nuevo_Lugar()
         {
+            CargarDDL();
             return View();
         }
         [HttpPost]
@@ -82,20 +112,23 @@ namespace TurismoMexicoMVC.Controllers
                         //dentro del mi contexto, en el contexto de camiones se guardan los datos
                         db.lugares.Add(lugar);
                         db.SaveChanges();
+                        CargarDDL();
                         Alert("Registro guardado con éxito", NotificationType.success);
                     }
 
                     //si lo anterior se hizo con éxito regreso a la vista de Camiones
-                    return Redirect("~/Camiones");
+                    return Redirect("~/Lugar");
                 }
                 //SI REDIRECCIONO AL VIEW MODEL ES PORQUE FALLÓ UNA VALIDACIÓN
                 Alert("Verificar la información", NotificationType.warning);
+                CargarDDL();
                 return View(model);
             }
             catch (Exception ex)
             {
                 //throw new Exception(ex.Message);
                 Alert("Ha ocurrido un error: " + ex.Message, NotificationType.error);
+                CargarDDL();
                 return View(model);
             }
         }
@@ -127,7 +160,7 @@ namespace TurismoMexicoMVC.Controllers
         {
             //aqui agregamos los ddl : crear primero el modelo CamionesDDL
             List<CategoriaDDL> listacat = new List<CategoriaDDL>();
-            listacat.Insert(0, new CategoriaDDL { id_categoria = 0, nombrecategoria = "Seleccione una categoria" });
+            listacat.Insert(0, new CategoriaDDL { id_categoria = 0, nombre_cat = "Seleccione una categoria" });
 
             using (TurismoMexicoEntities1 context = new TurismoMexicoEntities1())
             {
@@ -137,7 +170,7 @@ namespace TurismoMexicoMVC.Controllers
                     //por cada camion se crea un auxiliar y se añade a la lista
                     CategoriaDDL aux = new CategoriaDDL();
                     aux.id_categoria = c.id_categoria;
-                    aux.nombrecategoria = c.nombre;
+                    aux.nombre_cat = c.nombre;
                     listacat.Add(aux);
                 }
             }
