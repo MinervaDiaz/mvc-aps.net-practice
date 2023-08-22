@@ -170,10 +170,12 @@
     </Compile>
     <Compile Include="Models\ViewModels\CategoriasLista.cs" />
     <Compile Include="Models\DDL\CategoriaDDL.cs" />
+    <Compile Include="Models\ViewModels\ComentariosLista.cs" />
     <Compile Include="Models\ViewModels\FotosLista.cs" />
     <Compile Include="Models\ViewModels\LugaresLista.cs" />
     <Compile Include="Models\ViewModels\NuevaCategoria.cs" />
     <Compile Include="Models\ViewModels\NuevaFoto.cs" />
+    <Compile Include="Models\ViewModels\NuevoComentario.cs" />
     <Compile Include="Models\ViewModels\NuevoLugar.cs" />
     <Compile Include="Models\View_Lugares.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -259,6 +261,7 @@
     <Content Include="Views\Comentario\Index.cshtml" />
     <Content Include="Views\Foto\Editar_Foto.cshtml" />
     <Content Include="Views\Foto\Nueva_Foto.cshtml" />
+    <Content Include="Views\Comentario\Nuevo_Comentario.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

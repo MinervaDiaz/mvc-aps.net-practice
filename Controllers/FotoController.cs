@@ -40,7 +40,6 @@ namespace TurismoMexicoMVC.Controllers
         }
 
         [HttpPost]
-        //Polimorfismo de los métodos de arriba y abajo, enel método de abajo regresamos la peticion de POST, arriba solo es GET
         public ActionResult Nueva_Foto(NuevaFoto model)
         {
             try
