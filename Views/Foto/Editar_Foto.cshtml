@@ -1,0 +1,37 @@
+﻿@model TurismoMexicoMVC.Models.fotos
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("Editar_Foto", "Foto", FormMethod.Post))
+{
+    <div class="row">
+        <div class="col-md-12">
+            @* HIDDEN FOR ESTÁ OCULTO *@
+            @Html.HiddenFor(d => d.id_foto)
+
+            <div>
+                @Html.LabelFor(d => d.url_foto)
+                @Html.TextBoxFor(d => d.url_foto, new { @class = "form-control" })
+                @Html.ValidationMessageFor(d => d.url_foto, "", new { @class = "red" })
+            </div>
+            <div>
+                @Html.LabelFor(d => d.descripcion)
+                @Html.TextBoxFor(d => d.descripcion, new { @class = "form-control" })
+            </div>
+
+            @* NO SE USA LABELFOR PORQUE NO ES UN ATRIBUTO COMO TAL *@
+            <div>
+                @Html.Label("Foto")
+                @Html.DropDownListFor(d => d.id_foto, new SelectList(ViewBag.ListaLugares, "id_lugar", "nombre_lugar"), new { @class = "form-control" })
+            </div>
+
+            <div style="text-align:right;">
+                <input value="Guardar" class="btn btn-primary" type="submit" />
+            </div>
+
+
+        </div>
+
+    </div>
+}
+

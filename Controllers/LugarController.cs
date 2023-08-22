@@ -24,7 +24,7 @@ namespace TurismoMexicoMVC.Controllers
                              id_lugar = l.id_lugar,
                              nombre=l.nombre,
                              descripcion=l.descripcion,
-                             ubicacion=l.descripcion,
+                             ubicacion=l.ubicacion,
                              categoria_id = cat.id_categoria,
                              nombre_cat=cat.nombre,
                          }
@@ -35,7 +35,6 @@ namespace TurismoMexicoMVC.Controllers
 
         public ActionResult Editar_Lugar(int id)
         {
-            //llamamos al contexto, voy a trabajar con el contexto
             lugares lugares = new lugares();
             using (TurismoMexicoEntities1 db = new TurismoMexicoEntities1())
             {
@@ -46,7 +45,6 @@ namespace TurismoMexicoMVC.Controllers
             return View(lugares);
         }
 
-        //Polimorfismo de los métodos de arriba y abajo, enel método de abajo regresamos la peticion de POST, arriba solo es GET
         [HttpPost]
         public ActionResult Editar_Lugar(lugares model)
         {
@@ -88,6 +86,7 @@ namespace TurismoMexicoMVC.Controllers
             CargarDDL();
             return View();
         }
+
         [HttpPost]
         //Polimorfismo de los métodos de arriba y abajo, enel método de abajo regresamos la peticion de POST, arriba solo es GET
         public ActionResult Nuevo_Lugar(NuevoLugar model)

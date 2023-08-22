@@ -2,7 +2,7 @@
 
 <h2>@ViewBag.Title</h2>
 
-@using (Html.BeginForm("Editar lugar", "Lugares", FormMethod.Post))
+@using (Html.BeginForm("Editar_Lugar", "Lugar", FormMethod.Post))
 {
     <div class="row">
         <div class="col-md-12">
@@ -16,11 +16,11 @@
             </div>
             <div>
                 @Html.LabelFor(d => d.descripcion)
-                @Html.EditorFor(d => d.descripcion, "", new { @class = "date" })
+                @Html.TextBoxFor(d => d.descripcion, "", new { @class = "form-control" })
             </div>
             <div>
                 @Html.LabelFor(d => d.ubicacion)
-                @Html.EditorFor(d => d.ubicacion, "", new { @class = "date" })
+                @Html.TextBoxFor(d => d.ubicacion, "", new { @class = "form-control" })
             </div>
 
             @* NO SE USA LABELFOR PORQUE NO ES UN ATRIBUTO COMO TAL *@

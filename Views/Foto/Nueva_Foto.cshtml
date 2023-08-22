@@ -1,0 +1,34 @@
+﻿@model TurismoMexicoMVC.Models.ViewModels.NuevaFoto
+@{
+    ViewBag.Title = "Nueva foto";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("Nueva_Foto", "Foto", FormMethod.Post))
+{
+    <div class="row">
+        <div class="col-md-12">
+            <div>
+                @Html.LabelFor(d => d.url_foto, new { @class = "fw-bolder" })
+                @Html.TextBoxFor(d => d.url_foto, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(d => d.url_foto, null, new { @class = "red" })
+            </div>
+            <hr />
+            <div>
+                @Html.Label("Lugar", new { @class = "fw-bolder" })
+                @Html.DropDownListFor(d => d.id_foto, new SelectList(ViewBag.ListaLugares, "id_lugar", "nombre_lugar"), new { @class = "form-control" })
+            </div>
+            <hr />
+            <div>
+                @Html.LabelFor(d => d.descripcion, new { @class = "fw-bolder" })
+                @Html.TextBoxFor(d => d.descripcion, "", new { @class = "form-control" })
+            </div>
+            <hr />
+            <div style="text-align:right;">
+                <input value="Guardar" class="btn btn-primary" type="submit" />
+            </div>
+        </div>
+    </div>
+}
+

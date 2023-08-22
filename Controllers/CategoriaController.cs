@@ -24,7 +24,7 @@ namespace TurismoMexicoMVC.Controllers
                         {
                             id_categoria=c.id_categoria,
                             nombre=c.nombre,
-                            descripcion=c.descripcion
+                            descripcion=c.descripcion,
                         }
                       ).ToList();
             }
