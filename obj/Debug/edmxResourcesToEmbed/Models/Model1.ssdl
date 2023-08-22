@@ -53,12 +53,12 @@ advertencia 6002: La tabla o vista 'TurismoMexico.dbo.View_Lugares' no tiene def
     <Key>
       <PropertyRef Name="id_lugar" />
       <PropertyRef Name="categoria_id" />
-      <PropertyRef Name="nombre_categoria" />
+      <PropertyRef Name="nombreegoria" />
       <PropertyRef Name="nombre_lugar" />
     </Key>
     <Property Name="id_lugar" Type="int" Nullable="false" />
     <Property Name="categoria_id" Type="int" Nullable="false" />
-    <Property Name="nombre_categoria" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="nombreegoria" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="nombre_lugar" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="descripcion" Type="varchar" MaxLength="255" />
     <Property Name="ubicacion" Type="varchar" MaxLength="100" />
@@ -109,7 +109,7 @@ advertencia 6002: La tabla o vista 'TurismoMexico.dbo.View_Lugares' no tiene def
       <DefiningQuery>SELECT 
     [View_Lugares].[id_lugar] AS [id_lugar], 
     [View_Lugares].[categoria_id] AS [categoria_id], 
-    [View_Lugares].[nombre_categoria] AS [nombre_categoria], 
+    [View_Lugares].[nombreegoria] AS [nombreegoria], 
     [View_Lugares].[nombre_lugar] AS [nombre_lugar], 
     [View_Lugares].[descripcion] AS [descripcion], 
     [View_Lugares].[ubicacion] AS [ubicacion]

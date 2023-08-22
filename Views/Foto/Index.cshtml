@@ -1,7 +1,53 @@
-﻿
+﻿@* ponemos model en minúscula porque es un helper *@
+@model List<TurismoMexicoMVC.Models.ViewModels.FotosLista>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Catálogo de fotografías";
 }
 
-<h2>Index</h2>
+<h3 class="text-center mb-4">@ViewBag.Title</h3>
+
+<div class="row">
+    <div class="col-xs-2" style="text-align:right;">
+        @*<a href="~/Lugar/Nuevo_Lugar" class="btn btn-primary mb-3">Nueva fotografía</a>*@
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row bg-info">
+        @foreach (var Elemento in Model)
+        {
+            <div class="card col-5 mx-auto mb-2 mt-1 bg-warning">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img src="@Elemento.url_foto" class="img-fluid rounded-start" alt="...">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">@Elemento.nombre_lugar</h5>
+                                <p class="card-text">@Elemento.descripcion</p>
+                                <p class="card-text"><small class="text-muted">@Elemento.id_foto</small></p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        }
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+<div class="container">
+
+</div>
 

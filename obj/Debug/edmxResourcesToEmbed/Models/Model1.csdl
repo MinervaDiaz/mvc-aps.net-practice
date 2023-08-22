@@ -113,12 +113,12 @@
     <Key>
       <PropertyRef Name="id_lugar" />
       <PropertyRef Name="categoria_id" />
-      <PropertyRef Name="nombre_categoria" />
+      <PropertyRef Name="nombreegoria" />
       <PropertyRef Name="nombre_lugar" />
     </Key>
     <Property Name="id_lugar" Type="Int32" Nullable="false" />
     <Property Name="categoria_id" Type="Int32" Nullable="false" />
-    <Property Name="nombre_categoria" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="nombreegoria" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="nombre_lugar" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="ubicacion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />

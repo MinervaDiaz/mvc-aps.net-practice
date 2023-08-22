@@ -59,7 +59,7 @@
           <ScalarProperty Name="ubicacion" ColumnName="ubicacion" />
           <ScalarProperty Name="descripcion" ColumnName="descripcion" />
           <ScalarProperty Name="nombre_lugar" ColumnName="nombre_lugar" />
-          <ScalarProperty Name="nombre_categoria" ColumnName="nombre_categoria" />
+          <ScalarProperty Name="nombreegoria" ColumnName="nombreegoria" />
           <ScalarProperty Name="categoria_id" ColumnName="categoria_id" />
           <ScalarProperty Name="id_lugar" ColumnName="id_lugar" />
         </MappingFragment>
