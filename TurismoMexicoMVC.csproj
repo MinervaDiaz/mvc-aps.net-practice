@@ -262,6 +262,7 @@
     <Content Include="Views\Foto\Editar_Foto.cshtml" />
     <Content Include="Views\Foto\Nueva_Foto.cshtml" />
     <Content Include="Views\Comentario\Nuevo_Comentario.cshtml" />
+    <Content Include="Views\Comentario\Editar_Comentario.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

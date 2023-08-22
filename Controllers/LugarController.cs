@@ -79,8 +79,6 @@ namespace TurismoMexicoMVC.Controllers
             }
         }
 
-
-
         public ActionResult Nuevo_Lugar()
         {
             CargarDDL();

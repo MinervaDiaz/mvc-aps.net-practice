@@ -71,6 +71,54 @@ namespace TurismoMexicoMVC.Controllers
                 return View(model);
             }
         }
+
+        public ActionResult Editar_Comentario(int id)
+        {
+            comentarios comentarios = new comentarios();
+            using (TurismoMexicoEntities1 db = new TurismoMexicoEntities1())
+            {
+                comentarios = db.comentarios.Where(x => x.id_comentario == id).FirstOrDefault();
+            }
+            ViewBag.Title = "Editar Lugar n° " + comentarios.id_comentario;
+            CargarDDL();
+            return View(comentarios);
+        }
+
+        [HttpPost]
+        public ActionResult Editar_Comentario(comentarios model)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    using (TurismoMexicoEntities1 db = new TurismoMexicoEntities1())
+                    {
+                        var comentarios = new comentarios();
+                        comentarios.id_comentario = model.id_comentario;
+                        comentarios.lugar_id = model.lugar_id;
+                        comentarios.nombre_usuario = model.nombre_usuario;
+                        comentarios.comentario = model.comentario;
+                        comentarios.fecha = model.fecha;
+                        db.Entry(comentarios).State = System.Data.Entity.EntityState.Modified;
+                        db.SaveChanges();
+                        CargarDDL();
+                        Alert("Actualización exitosa", NotificationType.success);
+                    }
+                    return Redirect("~/Comentario");
+                }
+                Alert("Verificar la información", NotificationType.warning);
+                CargarDDL();
+                return View(model);
+            }
+            catch (Exception ex)
+            {
+                Alert("Ha ocurrido un error: " + ex.Message, NotificationType.error);
+                CargarDDL();
+                return View(model);
+            }
+        }
+
+
         public ActionResult Eliminar_Comentario(int id)
         {
             comentarios comentario = new comentarios();
