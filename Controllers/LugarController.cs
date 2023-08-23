@@ -73,7 +73,7 @@ namespace TurismoMexicoMVC.Controllers
             }
             catch (Exception ex)
             {
-                Alert("Ha ocurrido un error: " + ex.Message, NotificationType.error);
+                Alert("Verificar la información", NotificationType.error);
                 CargarDDL();
                 return View(model);
             }
@@ -110,7 +110,7 @@ namespace TurismoMexicoMVC.Controllers
                         db.lugares.Add(lugar);
                         db.SaveChanges();
                         CargarDDL();
-                        Alert("Registro guardado con éxito", NotificationType.success);
+                        Alert("Registro exitoso", NotificationType.success);
                     }
 
                     //si lo anterior se hizo con éxito regreso a la vista de Camiones
@@ -124,7 +124,7 @@ namespace TurismoMexicoMVC.Controllers
             catch (Exception ex)
             {
                 //throw new Exception(ex.Message);
-                Alert("Ha ocurrido un error: " + ex.Message, NotificationType.error);
+                Alert("Verificar la información", NotificationType.error);
                 CargarDDL();
                 return View(model);
             }
@@ -148,7 +148,7 @@ namespace TurismoMexicoMVC.Controllers
             }
             catch (Exception ex)
             {
-                Alert("Error: " + ex.Message, NotificationType.error);
+                Alert("Ha ocurrido un error", NotificationType.error);
                 return Redirect("~/Lugar");
             }
         }

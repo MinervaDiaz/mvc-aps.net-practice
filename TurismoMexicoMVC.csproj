@@ -251,7 +251,7 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Categoria\Index.cshtml" />
-    <Content Include="Views\Shared\_NotificactionPanel.cshtml" />
+    <Content Include="Views\Shared\_NotificationPanel.cshtml" />
     <Content Include="Views\Categoria\Nueva_Categoria.cshtml" />
     <Content Include="Views\Categoria\Editar_Categoria.cshtml" />
     <Content Include="Views\Lugar\Index.cshtml" />

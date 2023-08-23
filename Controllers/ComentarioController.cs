@@ -56,7 +56,7 @@ namespace TurismoMexicoMVC.Controllers
                         db.comentarios.Add(comentario);
                         db.SaveChanges();
                         CargarDDL();
-                        Alert("Registro guardado con éxito", NotificationType.success);
+                        Alert("Registro exitoso", NotificationType.success);
                     }
                     return Redirect("~/Comentario");
                 }
@@ -66,7 +66,7 @@ namespace TurismoMexicoMVC.Controllers
             }
             catch (Exception ex)
             {
-                Alert("Ha ocurrido un error: " + ex.Message, NotificationType.error);
+                Alert("Verificar la información", NotificationType.error);
                 CargarDDL();
                 return View(model);
             }
@@ -79,7 +79,7 @@ namespace TurismoMexicoMVC.Controllers
             {
                 comentarios = db.comentarios.Where(x => x.id_comentario == id).FirstOrDefault();
             }
-            ViewBag.Title = "Editar Lugar n° " + comentarios.id_comentario;
+            ViewBag.Title = "Editar comentario n° " + comentarios.id_comentario;
             CargarDDL();
             return View(comentarios);
         }
@@ -112,7 +112,7 @@ namespace TurismoMexicoMVC.Controllers
             }
             catch (Exception ex)
             {
-                Alert("Ha ocurrido un error: " + ex.Message, NotificationType.error);
+                Alert("Verificar la información", NotificationType.error);
                 CargarDDL();
                 return View(model);
             }
@@ -135,7 +135,7 @@ namespace TurismoMexicoMVC.Controllers
             }
             catch (Exception ex)
             {
-                Alert("Error: " + ex.Message, NotificationType.error);
+                Alert("Verificar la información", NotificationType.error);
                 return Redirect("~/Comentario");
             }
         }

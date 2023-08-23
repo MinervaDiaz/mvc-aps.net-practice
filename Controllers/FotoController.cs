@@ -55,7 +55,7 @@ namespace TurismoMexicoMVC.Controllers
                         db.fotos.Add(foto);
                         db.SaveChanges();
                         CargarDDL();
-                        Alert("Registro guardado con éxito", NotificationType.success);
+                        Alert("Registro exitoso", NotificationType.success);
                     }
                     return Redirect("~/Foto");
                 }
@@ -65,7 +65,7 @@ namespace TurismoMexicoMVC.Controllers
             }
             catch (Exception ex)
             {
-                Alert("Ha ocurrido un error: " + ex.Message, NotificationType.error);
+                Alert("Verificar la información", NotificationType.error);
                 CargarDDL();
                 return View(model);
             }
@@ -111,7 +111,7 @@ namespace TurismoMexicoMVC.Controllers
             }
             catch (Exception ex)
             {
-                Alert("Ha ocurrido un error: " + ex.Message, NotificationType.error);
+                Alert("Verificar la información", NotificationType.error);
                 CargarDDL();
                 return View(model);
             }
@@ -133,7 +133,7 @@ namespace TurismoMexicoMVC.Controllers
             }
             catch (Exception ex)
             {
-                Alert("Error: " + ex.Message, NotificationType.error);
+                Alert("Verificar la información", NotificationType.error);
                 return Redirect("~/Foto");
             }
         }

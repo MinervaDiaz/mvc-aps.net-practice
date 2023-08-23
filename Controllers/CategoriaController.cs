@@ -54,20 +54,20 @@ namespace TurismoMexicoMVC.Controllers
                         //dentro del mi contexto, en el contexto de camiones se guardan los datos
                         db.categorias.Add(categoria);
                         db.SaveChanges();
-                        Alert("Registro guardado con éxito", NotificationType.success);
+                        Alert("Registro exitoso", NotificationType.success);
                     }
 
                     //si lo anterior se hizo con éxito regreso a la vista de Camiones
                     return Redirect("~/Categoria");
                 }
                 //SI REDIRECCIONO AL VIEW MODEL ES PORQUE FALLÓ UNA VALIDACIÓN
-                Alert("Verificar la información", NotificationType.warning);
+                Alert("Verifique la información", NotificationType.warning);
                 return View(model);
             }
             catch (Exception ex)
             {
                 //throw new Exception(ex.Message);
-                Alert("Ha ocurrido un error: " + ex.Message, NotificationType.error);
+                Alert("Verifique la información", NotificationType.error);
                 return View(model);
             }
         }
@@ -89,41 +89,33 @@ namespace TurismoMexicoMVC.Controllers
         [HttpPost]
         public ActionResult Editar_Categoria(categorias model)
         {
+            categorias categorias = new categorias();
             try
             {
-                //validamos si el modelo es válido: esto es un helper para validar datos
-                //modelstate es por parte de razor
                 if (ModelState.IsValid)
                 {
-                    //entro a mi contexto de la base de datos
                     using (TurismoMexicoEntities1 db = new TurismoMexicoEntities1())
                     {
                         var categoria = new categorias();
                         categoria.id_categoria = model.id_categoria;
                         categoria.nombre = model.nombre;
                         categoria.descripcion = model.descripcion;
-                        //dentro del mi contexto, en el contexto de camiones se guardan los datos
                         db.Entry(categoria).State = System.Data.Entity.EntityState.Modified;
-                        //db.camiones.Add(camion);
                         db.SaveChanges();
-                        Alert("Registro guardado con éxito", NotificationType.success);
+                        Alert("Registro exitoso", NotificationType.success);
                     }
 
-                    //si lo anterior se hizo con éxito regreso a la vista de Camiones
                     return Redirect("~/Categoria");
                 }
-                //SI REDIRECCIONO AL VIEW MODEL ES PORQUE FALLÓ UNA VALIDACIÓN
-                Alert("Verificar la información", NotificationType.warning);
-                return View(model);
+                Alert("Verifique la información", NotificationType.warning);
+                return View(categorias);
             }
             catch (Exception ex)
             {
-                //throw new Exception(ex.Message);
-                Alert("Ha ocurrido un error: " + ex.Message, NotificationType.error);
+                Alert("Verifique la información" + ex.Message, NotificationType.error);
                 return View(model);
             }
         }
-
         //DELETE
         [HttpGet]
         public ActionResult Eliminar_Categoria(int id)
@@ -137,12 +129,12 @@ namespace TurismoMexicoMVC.Controllers
                     db.categorias.Remove(categoria);
                     db.SaveChanges();
                 }
-                Alert("Registro exitoso", NotificationType.success);
+                Alert("Eliminación exitosa", NotificationType.success);
                 return Redirect("~/Categoria");
             }
             catch (Exception ex)
             {
-                Alert("Error: " + ex.Message, NotificationType.error);
+                Alert("Verifique la información", NotificationType.error);
                 return Redirect("~/Categoria");
             }
         }
