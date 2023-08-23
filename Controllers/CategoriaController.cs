@@ -81,7 +81,7 @@ namespace TurismoMexicoMVC.Controllers
             {
                 categorias = db.categorias.Where(x => x.id_categoria == id).FirstOrDefault();
             }
-            ViewBag.Title = "Editar Categoria n° " + categorias.id_categoria;
+            ViewBag.Title = "Editar categoria # " + categorias.id_categoria;
             return View(categorias);
         }
 

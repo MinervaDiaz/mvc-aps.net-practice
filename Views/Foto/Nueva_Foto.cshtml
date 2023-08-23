@@ -3,30 +3,27 @@
     ViewBag.Title = "Nueva foto";
 }
 
-<h2>@ViewBag.Title</h2>
+<h4 class="mt-5 text-secondary fw-semibold">@ViewBag.Title</h4>
 
 @using (Html.BeginForm("Nueva_Foto", "Foto", FormMethod.Post))
 {
     <div class="row">
         <div class="col-md-12">
             <div>
-                @Html.LabelFor(d => d.url_foto, new { @class = "fw-bolder" })
+                @Html.LabelFor(d => d.url_foto, new { @class = "fw-bolder mt-3 mb-1" })
                 @Html.TextBoxFor(d => d.url_foto, "", new { @class = "form-control", required=true })
                 @Html.ValidationMessageFor(d => d.url_foto, null, new { @class = "red" })
             </div>
-            <hr />
             <div>
-                @Html.Label("Lugar", new { @class = "fw-bolder" })
+                @Html.Label("lugar", new { @class = "fw-bolder mt-3 mb-1" })
                 @Html.DropDownListFor(d => d.lugar_id, new SelectList(ViewBag.ListaLugares, "id_lugar", "nombre_lugar"), new { @class = "form-control" })
             </div>
-            <hr />
             <div>
-                @Html.LabelFor(d => d.descripcion, new { @class = "fw-bolder" })
+                @Html.LabelFor(d => d.descripcion, new { @class = "fw-bolder mt-3 mb-1" })
                 @Html.TextBoxFor(d => d.descripcion, "", new { @class = "form-control" })
             </div>
-            <hr />
-            <div style="text-align:right;">
-                <input value="Guardar" class="btn btn-primary" type="submit" />
+            <div style="text-align:left;">
+                <input value="Guardar" class="btn btn-secondary mt-5" type="submit" />
             </div>
         </div>
     </div>

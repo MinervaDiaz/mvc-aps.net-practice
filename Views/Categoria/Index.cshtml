@@ -1,40 +1,45 @@
 ﻿@* ponemos model en minúscula porque es un helper *@
 @model List<TurismoMexicoMVC.Models.ViewModels.CategoriasLista>
 @{
-    ViewBag.Title = "Lista de Categorias";
+    ViewBag.Title = "Categorias";
 }
 
-<h3 class="text-center mb-4">@ViewBag.Title</h3>
-
-<div class="row">
-    <div class="col-xs-2" style="text-align:right;">
-        <a href="~/Categoria/Nueva_Categoria" class="btn btn-primary mb-3">Nuevo Categoria</a>
+<div class="row mt-5 mb-2">
+    <div class="col-5" style="text-align:right;">
+        <h3 class="text-center text-secondary fw-semibol mb-4">@ViewBag.Title</h3>
+    </div>
+    <div class="col-5" style="text-align:right;">
+        <a href="~/Categoria/Nueva_Categoria" class="btn btn-warning mb-3">Agregar categoria</a>
     </div>
 </div>
 
 <div class="row">
     <div class="col-md-12">
-        <table class="table table-striped table-bordered text-center">
-            <tr class="bg-warning">
-                <th>Código Categoria</th>
-                <th>Nombre</th>
-                <th>Descripcion</th>
-                <th></th>
-                <th></th>
+        <table class="table table-striped table-bordered">
+            <thead class="bg-dark text-white">
+                <tr class="">
+                    <th class="text-center">Código Categoria</th>
+                    <th class="text-center">Nombre</th>
+                    <th class="text-center">Descripcion</th>
+                    <th class="text-center"></th>
+                </tr>
+            </thead>
+            <tbody>
                 @foreach (var Elemento in Model)
                 {
-                <tr>
-                    <td>@Elemento.id_categoria</td>
-                    <td>@Elemento.nombre</td>
-                    <td>@Elemento.descripcion</td>
-                    <td>
-                        <a class="btn btn-warning" href="~/Categoria/Editar_Categoria/@Elemento.id_categoria"><i class="fa-solid fa-wand-magic-sparkles"></i></a>
-                        <a class="btn btn-warning" href="~/Categoria/Eliminar_Categoria/@Elemento.id_categoria"><i class="fa-regular fa-trash-can"></i></a>
+                    <tr>
+                        <td>@Elemento.id_categoria</td>
+                        <td>@Elemento.nombre</td>
+                        <td>@Elemento.descripcion</td>
+                        <td>
+                            <a class="btn btn-warning" href="~/Categoria/Editar_Categoria/@Elemento.id_categoria"><i class="fa-solid fa-wand-magic-sparkles"></i></a>
+                            <a class="btn btn-warning" href="~/Categoria/Eliminar_Categoria/@Elemento.id_categoria"><i class="fa-regular fa-trash-can"></i></a>
 
-                    </td>
-                </tr>
+                        </td>
+                    </tr>
 
-            }
+                }
+            </tbody>
             </table>
         </div>
     </div>

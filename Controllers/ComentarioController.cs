@@ -79,7 +79,7 @@ namespace TurismoMexicoMVC.Controllers
             {
                 comentarios = db.comentarios.Where(x => x.id_comentario == id).FirstOrDefault();
             }
-            ViewBag.Title = "Editar comentario n° " + comentarios.id_comentario;
+            ViewBag.Title = "Editar comentario # " + comentarios.id_comentario;
             CargarDDL();
             return View(comentarios);
         }

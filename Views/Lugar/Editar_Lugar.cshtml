@@ -1,6 +1,6 @@
 ﻿@model TurismoMexicoMVC.Models.lugares
 
-<h2>@ViewBag.Title</h2>
+<h4 class="mt-5 text-secondary fw-semibold">@ViewBag.Title</h4>
 
 @using (Html.BeginForm("Editar_Lugar", "Lugar", FormMethod.Post))
 {
@@ -10,27 +10,27 @@
             @Html.HiddenFor(d => d.id_lugar)
 
             <div>
-                @Html.LabelFor(d => d.nombre)
-                @Html.TextBoxFor(d => d.nombre, null, new { @class = "form-control" })
+                @Html.LabelFor(d => d.nombre, new { @class = "fw-semibold mt-2" })
+                @Html.TextBoxFor(d => d.nombre, null, new { @class = "form-control mt-1" })
                 @Html.ValidationMessageFor(d => d.nombre, null, new { @class = "red" })
             </div>
             <div>
-                @Html.LabelFor(d => d.descripcion)
-                @Html.TextBoxFor(d => d.descripcion, "", new { @class = "form-control" })
+                @Html.LabelFor(d => d.descripcion, new { @class = "fw-semibold mt-3" })
+                @Html.TextBoxFor(d => d.descripcion, "", new { @class = "form-control mt-1" })
             </div>
             <div>
-                @Html.LabelFor(d => d.ubicacion)
-                @Html.TextBoxFor(d => d.ubicacion, "", new { @class = "form-control" })
+                @Html.LabelFor(d => d.ubicacion, new { @class = "fw-semibold mt-2" })
+                @Html.TextBoxFor(d => d.ubicacion, "", new { @class = "form-control mt-1" })
             </div>
 
             @* NO SE USA LABELFOR PORQUE NO ES UN ATRIBUTO COMO TAL *@
             <div>
-                @Html.Label("Lugar")
+                @Html.Label("Lugar", new { @class = "fw-semibold mt-2" })
                 @Html.DropDownListFor(d => d.categoria_id, new SelectList(ViewBag.ListaCategoria, "id_categoria", "nombre_cat"),new { @class = "form-control" })
             </div>
 
-            <div style="text-align:right;">
-                <input value="Guardar" class="btn btn-primary" type="submit" />
+            <div style="text-align:left;">
+                <input value="Guardar" class="btn btn-secondary mt-5" type="submit" />
             </div>
 
 

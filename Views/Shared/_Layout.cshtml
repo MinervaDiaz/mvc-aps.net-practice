@@ -4,10 +4,10 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
+    <title>Lugares para turistear</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    @* SCRIPT PARA ICONS DE FONT AWESOME *@
+    @*SCRIPT PARA ICONS DE FONT AWESOME*@
     <script src="https://kit.fontawesome.com/eff43534f8.js" crossorigin="anonymous"></script>
     @* AGREGAR JS Y CSS ARRASTRANDOLO *@
     <link href="~/Content/sweetalert2.css" rel="stylesheet" />
@@ -15,32 +15,41 @@
     <link href="~/Content/Site.css" rel="stylesheet" />
 </head>
 <body>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-nav">
+    <div class="px-3 py-2 text-bg-dark">
         <div class="container">
-            @Html.ActionLink("Nombre de la aplicación", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Alternar navegación" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
-                <ul class="navbar-nav flex-grow-1">
-                    <li>@Html.ActionLink("Categoria", "Index", "Categoria", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Lugar", "Index", "Lugar", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Fotos", "Index", "Foto", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Comentarios", "Index", "Comentario", new { area = "" }, new { @class = "nav-link" })</li>
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                <a href="/" class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
+                    <img width="55" height="47" src="https://cdn-icons-png.flaticon.com/512/1863/1863982.png" />
+                </a>
+                <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
+                    <li class="nav-link text-white me-2">
+                            <i class="fa-solid fa-list fa-xl"></i>
+                            @Html.ActionLink("Categorias", "Index", "Categoria",new { area = "" }, new { @class = "text-white text-decoration-none" } )
+                    </li>
+                    <li class="nav-link text-white me-2">
+                        <i class="fa-solid fa-place-of-worship fa-xl"></i>
+                        @Html.ActionLink("Lugares", "Index", "Lugar", new { area = "" }, new { @class = "text-white text-decoration-none" })
+                    </li>
+                    <li class="nav-link text-white me-2">
+                        <i class="fa-solid fa-image fa-xl"></i>
+                        @Html.ActionLink("Fotos", "Index", "Foto", new { area = "" }, new { @class = "text-white text-decoration-none" })
+                    </li>
+                    <li class="nav-link text-white me-2">
+                        <i class="fa-solid fa-comment fa-xl"></i>
+                        @Html.ActionLink("Comentarios", "Index", "Comentario", new { area = "" }, new { @class = "text-white text-decoration-none" })
+                    </li>
                 </ul>
             </div>
         </div>
-    </nav>
+    </div>
     <div class="container body-content">
         @Html.Partial("_NotificationPanel")
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - Mi aplicación ASP.NET</p>
+            <p>&copy; @DateTime.Now.Year </p>
         </footer>
     </div>
-
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)

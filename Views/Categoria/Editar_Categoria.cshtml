@@ -1,6 +1,6 @@
 ﻿@model TurismoMexicoMVC.Models.categorias
 
-<h2>@ViewBag.Title</h2>
+<h4 class="mt-5 text-secondary fw-semibold">@ViewBag.Title</h4>
 
 @using (Html.BeginForm("Editar_Categoria", "Categoria", FormMethod.Post))
 {
@@ -9,17 +9,17 @@
             
             @Html.HiddenFor(d => d.id_categoria)
             <div>
-                @Html.LabelFor(d => d.nombre, new { @class = "fw-bolder"})
+                @Html.LabelFor(d => d.nombre, new { @class = "fw-bolder mt-2 mb-1"})
                 @Html.TextBoxFor(d => d.nombre, "", new { @class = "form-control", required = true })
                 @Html.ValidationMessageFor(d => d.nombre, null, new { @class = "red" })
             </div>
             <div>
-                @Html.LabelFor(d => d.descripcion, new { @class = "fw-bolder" })
-                @Html.TextBoxFor(d => d.descripcion, "", new { @class = "form-control" })
+                @Html.LabelFor(d => d.descripcion, new { @class = "fw-bolder mt-3" })
+                @Html.TextBoxFor(d => d.descripcion, "", new { @class = "form-control mt-1" })
             </div>
             </div>
-            <div style="text-align:right;">
-                <input value="Guardar" class="btn btn-primary" type="submit" />
+            <div style="text-align:left;">
+                <input value="Guardar" class="btn btn-secondary mt-3" type="submit" />
             </div>
         </div>
 }

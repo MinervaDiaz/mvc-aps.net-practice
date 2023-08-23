@@ -40,7 +40,7 @@ namespace TurismoMexicoMVC.Controllers
             {
                 lugares = db.lugares.Where(x => x.id_lugar == id).FirstOrDefault();
             }
-            ViewBag.Title = "Editar Lugar n° " + lugares.id_lugar;
+            ViewBag.Title = "Editar lugar # " + lugares.id_lugar;
             CargarDDL();
             return View(lugares);
         }

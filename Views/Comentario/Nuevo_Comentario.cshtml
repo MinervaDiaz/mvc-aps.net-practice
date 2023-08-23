@@ -3,36 +3,32 @@
     ViewBag.Title = "Nuevo comentario";
 }
 
-<h2>@ViewBag.Title</h2>
+<h4 class="mt-5 text-secondary fw-semibold">@ViewBag.Title</h4>
 
 @using (Html.BeginForm("Nuevo_Comentario", "Comentario", FormMethod.Post))
 {
     <div class="row">
         <div class="col-md-12">
             <div>
-                @Html.LabelFor(d => d.nombre_usuario, new { @class = "fw-bolder" })
+                @Html.LabelFor(d => d.nombre_usuario, new { @class = "fw-bolder mt-3 mb-1" })
                 @Html.TextBoxFor(d => d.nombre_usuario, "", new { @class = "form-control", required = true })
                 @Html.ValidationMessageFor(d => d.nombre_usuario, null, new { @class = "red" })
             </div>
-            <hr />
             <div>
-                @Html.LabelFor(d => d.comentario, new { @class = "fw-bolder" })
+                @Html.LabelFor(d => d.comentario, new { @class = "fw-bolder mt-3 mb-1" })
                 @Html.TextBoxFor(d => d.comentario, "", new { @class = "form-control", required = true })
             </div>
-            <hr />
             <div>
-                @Html.LabelFor(d => d.fecha, new { @class = "fw-bolder" })
-                @Html.EditorFor(d => d.fecha, "", new { @class = "date" })
+                @Html.LabelFor(d => d.fecha, new { @class = "fw-bolder mt-3 mb-1" })
+                @Html.EditorFor(d => d.fecha, "", new { @class = "form-control date" })
             </div>
-            <hr />
             <div>
-                @Html.Label("Lugar", new { @class = "fw-bolder" })
+                @Html.Label("Lugar", new { @class = "fw-bolder mt-3 mb-1" })
                 @Html.DropDownListFor(d => d.lugar_id, new SelectList(ViewBag.ListaLugares, "id_lugar", "nombre_lugar"), new { @class = "form-control" })
 
             </div>
-            <hr />
-            <div style="text-align:right;">
-                <input value="Guardar" class="btn btn-primary" type="submit" />
+            <div style="text-align:left;">
+                <input value="Guardar" class="btn btn-secondary mt-5" type="submit" />
             </div>
         </div>
     </div>

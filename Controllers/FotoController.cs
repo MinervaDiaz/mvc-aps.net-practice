@@ -79,7 +79,7 @@ namespace TurismoMexicoMVC.Controllers
             {
                 fotos = db.fotos.Where(x => x.id_foto == id).FirstOrDefault();
             }
-            ViewBag.Title = "Editar foto n° " + fotos.id_foto;
+            ViewBag.Title = "Editar foto # " + fotos.id_foto;
             CargarDDL();
             return View(fotos);
         }

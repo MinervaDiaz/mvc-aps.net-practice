@@ -4,34 +4,39 @@
     ViewBag.Title = "Catálogo de fotografías";
 }
 
-<h3 class="text-center mt-3 mb-2 text-secondary fs-4">@ViewBag.Title</h3>
-<div class="text-center">
-    <a href="~/Foto/Nueva_Foto" class="btn btn-secondary mb-3 text-center">Agregar</a>
-</div>
-<div class="container">
-    <div class="row mt-4">
-        @foreach (var Elemento in Model)
-        {
-            <div class="col-6 d-flex justify-content-center">
-                <div class="card mb-3 shadow border border-0" style="max-width: 900px;">
-                    <div class="row g-0">
-                        <div class="col-md-5">
-                            <img src="https://www.elheraldodechiapas.com.mx/circulos/turismo/erzhxu-cascadas.jpg/alternates/LANDSCAPE_768/Cascadas.jpg" class="img-fluid rounded-start" alt="...">
-                        </div>
-                        <div class="col-md-7">
-                            <div class="card-body">
-                                <h5 class="card-title fs-3 mb-4">@Elemento.nombre_lugar</h5>
-                                <p class="card-text">@Elemento.descripcion</p>
-                                <p class="card-text"><small class="text-muted">@Elemento.id_foto</small></p>
-                                <a class="btn btn-warning" href="~/Foto/Editar_Foto/@Elemento.id_foto"><i class="fa-solid fa-wand-magic-sparkles"></i></a>
-                                <a class="btn btn-warning" href="~/Foto/Eliminar_Foto/@Elemento.id_foto"><i class="fa-regular fa-trash-can"></i></a>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        }
-
+<div class="row mt-5 mb-2">
+    <div class="col-5" style="text-align:right;">
+        <h3 class="text-center text-secondary fw-semibol mb-4">@ViewBag.Title</h3>
+    </div>
+    <div class="col-5 text-end">
+        <a href="~/Foto/Nueva_Foto" class="btn btn-secondary mb-3 text-center">Agregar</a>
     </div>
 </div>
+<hr />
+    <div class="container">
+        <div class="row mt-4">
+            @foreach (var Elemento in Model)
+            {
+                <div class="col-6 d-flex justify-content-center">
+                    <div class="card mb-3 shadow border border-0" style="max-width: 900px;">
+                        <div class="row g-0">
+                            <div class="col-md-5">
+                                <img src="https://www.elheraldodechiapas.com.mx/circulos/turismo/erzhxu-cascadas.jpg/alternates/LANDSCAPE_768/Cascadas.jpg" class="img-fluid rounded-start" alt="...">
+                            </div>
+                            <div class="col-md-7">
+                                <div class="card-body">
+                                    <h5 class="card-title fs-3 mb-4">@Elemento.nombre_lugar</h5>
+                                    <p class="card-text">@Elemento.descripcion</p>
+                                    <p class="card-text"><small class="text-muted">Fotografia @Elemento.id_foto</small></p>
+                                    <a class="btn btn-warning" href="~/Foto/Editar_Foto/@Elemento.id_foto"><i class="fa-solid fa-wand-magic-sparkles"></i></a>
+                                    <a class="btn btn-warning" href="~/Foto/Eliminar_Foto/@Elemento.id_foto"><i class="fa-regular fa-trash-can"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
