@@ -105,13 +105,13 @@ namespace TurismoMexicoMVC.Controllers
                     }
                     return Redirect("~/Foto");
                 }
-                Alert("Verificar la información", NotificationType.warning);
+                Alert("Ha ocurrido un error, inténtelo más tarde", NotificationType.warning);
                 CargarDDL();
                 return View(model);
             }
             catch (Exception ex)
             {
-                Alert("Verificar la información", NotificationType.error);
+                Alert("Ha ocurrido un error, inténtelo más tarde", NotificationType.error);
                 CargarDDL();
                 return View(model);
             }
