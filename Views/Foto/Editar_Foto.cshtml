@@ -22,7 +22,7 @@
             @* NO SE USA LABELFOR PORQUE NO ES UN ATRIBUTO COMO TAL *@
             <div>
                 @Html.Label("Foto")
-                @Html.DropDownListFor(d => d.id_foto, new SelectList(ViewBag.ListaLugares, "id_lugar", "nombre_lugar"), new { @class = "form-control" })
+                @Html.DropDownListFor(d => d.lugar_id, new SelectList(ViewBag.ListaLugares, "id_lugar", "nombre_lugar"), new { @class = "form-control" })
             </div>
 
             <div style="text-align:right;">
